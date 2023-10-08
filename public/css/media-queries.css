@@ -1,0 +1,67 @@
+:root {
+    --bg-color-dark: #1f242d;
+    --bg-color-light: #f4ffff;
+}
+
+@media (max-width: 768px) {
+    #menu-icon{
+        display: block;
+        font-size: xx-large;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 2%;
+        background-color: var(--bg-color);
+        display: none;
+    }
+    .navbar a{
+        padding-bottom: 5%;
+    }
+
+    .navbar.active{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home{
+        flex-wrap: wrap;
+    }
+
+    .btn{
+        margin-bottom: 5%;
+    }
+    .home-img{
+        margin-top: 1rem;    
+        margin-left: 1rem;
+        }
+    .home-img img{
+        width: 100%;
+    }
+    .about{
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    .about h1 {
+        border-left: .7rem solid var(--text-color);
+        padding-left: 5rem;
+    }
+
+    
+  .education,
+  .experience {
+    width: 90%;
+    height: auto;
+    padding-bottom: 10%;
+  }
+  #card{
+    transform: translateX(5%);
+  }
+  #card.is-flipped{
+    transform: translateX(-105%) rotateY(180deg);
+  }
+}
