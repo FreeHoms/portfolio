@@ -6,8 +6,8 @@ const session = require('express-session');
 router.use(bodyParser.urlencoded({ extended: true }));
 
 // Sample hardcoded username and password for demonstration
-const validUsername = 'demo';
-const validPassword = 'password';
+const validUsername = 'Zaid';
+const validPassword = 'Za.id.gh';
 
 // Middleware to check if the user is authenticated
 const isAuthenticated = (req, res, next) => {
@@ -33,9 +33,11 @@ router.post('/login', (req, res) => {
   if (username === validUsername && password === validPassword) {
     // Set user information in the session
     req.session.user = { username };
+
+    req.session.isAuthenticated = true;
     // Successful login, you might redirect to a dashboard
-    res.redirect('/dashboard');
-  } else {
+    res.redirect('/');
+} else {
     // Failed login, you might render the login page with an error message
     res.render('login', { error: 'Invalid username or password' });
   }

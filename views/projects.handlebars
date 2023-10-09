@@ -3,14 +3,21 @@
     
     <!-- Form for creating a new project -->
     {{#if isAuthenticated}}
-    <form action="/projects" method="post">
-        <label for="newTitle">Title:</label>
+    <form action="/projects" class="create flex" method="post">
+        <div class="child1 flex">
+        <label for="newTitle"></label>
         <input type="text" id="newTitle" name="title" placeholder="Title" required>
         
-        <label for="newDescription">Description:</label>
+        <label for="newDescription"></label>
         <textarea id="newDescription" name="description" placeholder="Description" required></textarea>
+
+        <!-- Include the link field in the create form -->
+        <label for="newLink"></label>
+        <input type="text" id="newLink" name="link" placeholder="Link" required>
+        </div>
+        <div class="child2"><button class="btn" type="submit">Create Project</button></div>
+
         
-        <button type="submit">Create Project</button>
     </form>
     {{/if}}
 
@@ -20,21 +27,23 @@
             <i class='bx bx-code-alt'></i>
             <h3>{{title}}</h3>
             <p>{{description}}</p>
-            <a href="#" class="btn">More Info</a>
+            <a href="{{link}}" class="btn" target="_blank">Github Link</a>
 
             <!-- Form for updating a project -->
-            {{#if isAuthenticated}}
+            {{#if ../isAuthenticated}}
             <form action="/projects/{{id}}/edit" method="post">
-                <input type="text" name="title" placeholder="New Title">
-                <input type="text" name="description" placeholder="New Description">
-                <button type="submit">Update</button>
+                <div class="child1">
+                       <input type="text" name="title" placeholder="New Title">
+                       <input type="text" name="description" placeholder="New Description">
+                       <input type="text" name="link" placeholder="New Link">
+                </div>
+
+                <button class="btn" type="submit">Update</button>
             </form>
-            
 
             <!-- Form for deleting a project -->
-          
             <form action="/projects/{{id}}/delete" method="post">
-                <button type="submit">Delete</button>
+                <button class="btn" type="submit">Delete</button>
             </form>
             {{/if}}
         </div>

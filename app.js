@@ -5,8 +5,10 @@ const app = express() // creates the Express application
 const bodyParser = require('body-parser'); 
 const sqlite3 = require('sqlite3')
 const db = new sqlite3.Database('my-database.db')
-const { setupDatabase } = require('./project-database'); // Adjust the path accordingly
-const projectRouter = require('./routers/project-router'); // Adjust the path accordingly
+const { setupDatabase } = require('./project-database'); 
+const projectRouter = require('./routers/project-router');
+const blogRouter = require('./routers/blog-router');
+const faqRouter = require('./routers/faq-router')
 const { router: authRouter, isAuthenticated } = require('./routers/auth-router');
 const session = require('express-session');
 
@@ -31,14 +33,25 @@ app.use(session({
 }));
 
 
+// setupDatabase();
+
+
+
 // Setup the database
 
 
-// setupDatabase();
 
 app.use('/', authRouter);
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isAuthenticated || false;
+  next();
+});
+
 // Use the projectRouter for CRUD operations related to projects
 app.use('/', projectRouter);
+app.use('/', blogRouter);
+app.use('/', faqRouter);
+
 
 // defines route "/"
 app.get('/', function(req, res){
@@ -49,26 +62,6 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
-app.get('/projects', (req, res) => {
-  // Retrieve projects from the database
-  db.all('SELECT * FROM projects', (err, projectsData) => {
-    if (err) {
-      console.error(err.message);
-      res.status(500).send('Internal Server Error');
-      return;
-    }
-
-    res.render('projects', { projectsData });
-  });
-});
-
-app.get('/blog', (req, res) => {
-  res.render('blog');
-});
-
-app.get('/faq', (req, res) => {
-  res.render('faq');
-});
 
 app.get('/login', (req, res) => {
   res.render('login');

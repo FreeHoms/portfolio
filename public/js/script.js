@@ -58,15 +58,20 @@ document.addEventListener('DOMContentLoaded', function () {
         Navbar.classList.toggle('active');
     }
 
-    // Typed.js initialization code here
-    const typed = new Typed('.multiple-text', {
-        strings: ['Hello', 'مرحبا', 'Hej', 'Hola', 'Bonjour', 'Hallo', 'Ciao', 'Привет', '你好', 'こんにちは', 'नमस्ते', 'Olá'],
-        typeSpeed: 100,
-        backSpeed: 100,
-        backDelay: 1000,
-        loop: true
-    });
-
-
 });
+
+function addQuestionMark() {
+    // Get the value of the question input
+    const questionInput = document.getElementById('newQuestion');
+    const questionValue = questionInput.value.trim();
+
+    // Check if the question doesn't already end with a question mark
+    if (questionValue.length > 0 && !questionValue.endsWith('?')) {
+        // Append a question mark to the question input
+        questionInput.value = questionValue + '?';
+    }
+
+    // Continue with the form submission
+    return true;
+}
 

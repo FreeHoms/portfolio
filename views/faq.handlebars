@@ -1,0 +1,47 @@
+<div id="faq" class="faq">
+    <h1>Frequently Asked Questions</h1>
+
+    <!-- Form for creating a new FAQ -->
+    {{#if isAuthenticated}}
+    <form action="/faq" class="create flex" method="post" onsubmit="return addQuestionMark()">
+        <div class="child1 flex">
+            <label for="newQuestion"></label>
+            <input type="text" id="newQuestion" name="question" placeholder="Question" required>
+
+            <!-- Include the answer field in the create form -->
+            <label for="newAnswer"></label>
+            <textarea id="newAnswer" name="answer" placeholder="Answer" required></textarea>
+        </div>
+        <div class="child2">
+            <button class="btn" type="submit">Create FAQ</button>
+        </div>
+    </form>
+    {{/if}}
+
+    <div class="faq-content">
+        {{#each faqData}}
+        <div class="faq-question">
+            <input id="q{{id}}" type="checkbox" class="panel">
+            <div class="plus">+</div>
+            <label for="q{{id}}" class="panel-title">{{question}}</label>
+            <div class="panel-content">{{answer}}</div>
+
+            <!-- Form for updating an FAQ -->
+            {{#if ../isAuthenticated}}
+            <form action="/faq/{{id}}/edit" method="post">
+                <div class="child1">
+                    <input type="text" name="question" placeholder="New Question">
+                    <textarea name="answer" placeholder="New Answer"></textarea>
+                </div>
+                <button class="btn" type="submit">Update</button>
+            </form>
+
+            <!-- Form for deleting an FAQ -->
+            <form action="/faq/{{id}}/delete" method="post">
+                <button class="btn" type="submit">Delete</button>
+            </form>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+</div>

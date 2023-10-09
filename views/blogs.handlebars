@@ -1,0 +1,55 @@
+<div id="blogs">
+    <h1 class="heading">My <span>Blogs</span></h1>
+    
+    <!-- Form for creating a new blog -->
+    {{#if isAuthenticated}}
+    <form action="/blogs" class="create flex" method="post">
+        <div class="child1 flex">
+            <label for="newBlogTitle">Title:</label>
+            <input type="text" id="newBlogTitle" name="title" placeholder="Title" required>
+            
+            <label for="newBlogMinorDescription">Minor Description:</label>
+            <input type="text" id="newBlogMinorDescription" name="minor_description" placeholder="Minor Description" required>
+
+            <label for="newBlogImgLink">Img Link:</label>
+            <input type="text" id="newBlogImgLink" name="img_link" placeholder="Image Link" required>
+
+            <label for="newBlogContent">Content:</label>
+            <textarea id="newBlogContent" name="content" placeholder="Content" required></textarea>
+        </div>
+        <div class="child2"><button class="btn" type="submit">Create Blog</button></div>
+    </form>
+    {{/if}}
+
+    <div class="blogs-container flex">
+        {{#each blogData}}
+        <div class="blog-box">
+            <i class='bx bx-book'></i>
+            <h3>{{title}}</h3>
+            <p>{{minor_description}}</p>
+            <!-- Include any additional fields for displaying a blog -->
+
+            <!-- Form for updating a blog -->
+            {{#if ../isAuthenticated}}
+            <form action="/blogs/{{id}}/edit" method="post">
+                <div class="child1">
+                    <input type="text" name="title" placeholder="New Title">
+                    <input type="text" name="minor_description" placeholder="New Minor Description">
+                    <input type="text" name="img_link" placeholder="New Image Link">
+                    <textarea name="content" placeholder="New Content"></textarea>
+                    <!-- Include any additional fields for updating a blog -->
+                </div>
+                <button class="btn" type="submit">Update</button>
+            </form>
+
+            <!-- Form for deleting a blog -->
+            <form action="/blogs/{{id}}/delete" method="post">
+                <button class="btn" type="submit">Delete</button>
+            </form>
+            {{/if}}
+            <a href="/blogs/{{id}}" class="btn">Open Blog</a>
+
+        </div>
+        {{/each}}
+    </div>
+</div>

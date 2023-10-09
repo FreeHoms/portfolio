@@ -27,9 +27,9 @@
 
 
     --bg-color-light: #f4ffff;
-    --second-bg-color-light: #eaffff;
+    --second-bg-color-light: #e4fafa;
     --text-color-light: #333;
-    --main-color-light: #00387d;
+    --main-color-light: #0072fe;
     --second-main-color-light: #3e78b2;
 }
 
@@ -109,7 +109,7 @@ span{
     color: var(--main-color);
 }
 
-.home-content h1{
+h1{
     font-size: 5.6rem;
     font-weight: 700;
     line-height: 1.3;
@@ -176,6 +176,7 @@ box-shadow:  8px 8px 16px var(--main-color),
 .btn{
     display: inline-block;
     padding: 1rem 2.5rem;
+    margin-bottom: 1rem;
     background: var(--main-color);
     border-radius: 4rem;
     box-shadow: 0 0 1rem var(--main-color);
@@ -296,45 +297,196 @@ box-shadow:  8px 8px 16px var(--main-color),
     margin-bottom: 10%;  
 }
 
-/* Prpjects */
+/* Prpjects, blogs*/
 .heading{
     font-size: 4rem;
     text-align: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-.prjects-container{
+.projects-container,.blog-container{
    flex-wrap: wrap;
    gap: 2rem;
    margin: 2rem;
 }
 
-.project-box{
+.project-box,.blog-box{
     flex: 1 1 30rem;
     background-color: var(--second-bg-color);
+    width: 100%;
+    margin: 1rem;
     padding: 3rem 3rem 4rem;
     border-radius: 4rem;
-    text-align: center;
     border: .2rem solid var(--bg-color);
+    text-align: center;
     transition: .5s;
 }
-.project-box:hover{
+.project-box:hover, .blog-box:hover{
     border-color: var(--main-color);
     box-shadow:  8px 8px 16px var(--main-color),
              -8px -8px 16px var(--main-color);
     transform: scale(1.01);
 }
-.project-box h3{
+.project-box h3,.blog-box h3{
     font-size: 3.2rem;
     font-weight: 700;
     padding-bottom: 2rem;
 }
-.project-box i{
+.project-box i,.blog-box i{
     font-size: 4rem;
     color: var(--main-color);
 }
 
-.project-box p{
+.project-box p,.blog-box p{
+    width: auto;
     padding-bottom: 2rem;
 }
 
+.create{
+    justify-content: space-between;
+    margin: 2rem;
+}
+
+.child1{
+    gap: 2rem;
+}
+
+.child1 input, .child1 textarea{
+    width: 100%;
+    height: 4rem;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: .4rem solid var(--main-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.blog-details{
+    text-align: center;
+}
+.blog-details h3{
+    margin: 2rem;
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+.blog-details p{
+    margin: 2rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.blog-details img{
+    margin-top: 5rem;    
+    margin-left: 4rem;
+    border-radius: 88px;
+    max-width: 80%;
+    background: var(--bg-color);
+    box-shadow:  8px 8px 16px var(--main-color),
+                 -8px -8px 16px var(--second-main-color);
+    }
+
+
+/* login */
+
+#login {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 4rem;
+    padding: 20px;
+    border-color: var(--main-color);
+    box-shadow:  8px 8px 16px var(--main-color),
+             -8px -8px 16px var(--main-color);
+
+}
+
+#login h1 {
+    text-align: center;
+    color: var(--main-color);
+}
+
+#login form {
+    margin-top: 20px;
+}
+
+#login label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--main-color);
+}
+
+#login input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* faq */
+
+.faq{
+    background-color: var(--second-bg-color);
+    width: 80%;
+    margin: 10%;
+    padding: 3rem 3rem 4rem;
+    border-radius: 4rem;
+    border: .2rem solid var(--main-color);
+    box-shadow:  8px 8px 16px var(--main-color),
+    -8px -8px 16px var(--main-color);
+    text-align: center;
+}
+
+  
+  .faq-question {
+    padding: 2rem 0;
+    border-bottom: 1px dotted #ccc;
+  }
+  
+  .panel-title {
+    font-size: 3rem;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 10px 10px 0 48px;
+    display: block;
+    cursor: pointer;
+  }
+  .panel:checked ~ .panel-title{
+    color: var(--main-color);
+  }
+  
+  .panel-content {
+    font-size: 2rem;
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+    transition: .4s ease;
+  }
+  
+  .panel:checked ~ .panel-content{
+    height: auto;
+    opacity: 1;
+    padding: 1rem;
+  }
+ 
+  .plus {
+    position: absolute;
+    margin-left: 1.5rem;
+    margin-top: .2rem;
+    font-size: 4rem;
+    line-height: 100%;
+    user-select: none;
+    transition: .2s ease;
+  }
+  
+  .panel:checked ~ .plus {
+    color: var(--main-color);
+    transform: rotate(45deg);
+  }
+  
+  .panel {
+    display: none;
+  }
