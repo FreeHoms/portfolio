@@ -1,17 +1,43 @@
 <div id="projects">
     <h1 class="heading">My <span>Projects</span></h1>
-    <div class="prjects-container flex">
+    
+    <!-- Form for creating a new project -->
+    {{#if isAuthenticated}}
+    <form action="/projects" method="post">
+        <label for="newTitle">Title:</label>
+        <input type="text" id="newTitle" name="title" placeholder="Title" required>
+        
+        <label for="newDescription">Description:</label>
+        <textarea id="newDescription" name="description" placeholder="Description" required></textarea>
+        
+        <button type="submit">Create Project</button>
+    </form>
+    {{/if}}
+
+    <div class="projects-container flex">
+        {{#each projectsData}}
         <div class="project-box">
-            <i class='bx bx-code-alt' ></i>
-            <h3>Project 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam beatae animi soluta rem obcaecati quaerat iure, facere amet, quisquam est quos molestiae facilis praesentium omnis, temporibus itaque sequi laboriosam. Itaque.</p>
+            <i class='bx bx-code-alt'></i>
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
             <a href="#" class="btn">More Info</a>
+
+            <!-- Form for updating a project -->
+            {{#if isAuthenticated}}
+            <form action="/projects/{{id}}/edit" method="post">
+                <input type="text" name="title" placeholder="New Title">
+                <input type="text" name="description" placeholder="New Description">
+                <button type="submit">Update</button>
+            </form>
+            
+
+            <!-- Form for deleting a project -->
+          
+            <form action="/projects/{{id}}/delete" method="post">
+                <button type="submit">Delete</button>
+            </form>
+            {{/if}}
         </div>
-        <div class="project-box">
-            <i class='bx bx-code-alt' ></i>
-            <h3>Project 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam beatae animi soluta rem obcaecati quaerat iure, facere amet, quisquam est quos molestiae facilis praesentium omnis, temporibus itaque sequi laboriosam. Itaque.</p>
-            <a href="#" class="btn">More Info</a>
-        </div>
+        {{/each}}
     </div>
 </div>
