@@ -9,6 +9,7 @@ const { setupDatabase } = require('./project-database');
 const projectRouter = require('./routers/project-router');
 const blogRouter = require('./routers/blog-router');
 const faqRouter = require('./routers/faq-router')
+const contactRouter = require('./routers/contact-router')
 const { router: authRouter, isAuthenticated } = require('./routers/auth-router');
 const session = require('express-session');
 
@@ -47,10 +48,14 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 // Use the projectRouter for CRUD operations related to projects
 app.use('/', projectRouter);
 app.use('/', blogRouter);
 app.use('/', faqRouter);
+app.use('/', contactRouter);
+
 
 
 // defines route "/"

@@ -2,7 +2,7 @@
     <div class="home-content">
         <h3><span class="multiple-text"></span>, My Name Is</h3>
         <h1>Zaid Ghalioun</h1>
-        <h3>And I'm a Frontend Developer</h3>
+        <h3>And I'm a Software Engineering Student</h3>
         <p>I specialize in crafting visually appealing and user-friendly websites using HTML, CSS, and JavaScript. Let's connect and discuss your next project!</p>
             <div class="social-media">
                 <a href="#"><i class='bx bxl-facebook-square' ></i></a>
@@ -11,7 +11,11 @@
                 <a href="#"><i class='bx bxl-github' ></i></a>
             </div>
             <a href="#" class="btn">Download CV</a>
-            <a href="#" class="btn btn-2">Hire Me!</a>
+                {{#if isAuthenticated}}
+            <a href="/contact" class="btn btn-2">Messages</a>
+                {{else}}
+            <a href="/contact" class="btn btn-2">Hire Me!</a>
+                {{/if}}
 
             
     </div>

@@ -311,7 +311,7 @@ box-shadow:  8px 8px 16px var(--main-color),
 }
 
 .project-box,.blog-box{
-    flex: 1 1 30rem;
+    flex: 1 1 40rem;
     background-color: var(--second-bg-color);
     width: 100%;
     margin: 1rem;
@@ -339,6 +339,7 @@ box-shadow:  8px 8px 16px var(--main-color),
 
 .project-box p,.blog-box p{
     width: auto;
+    font-size: 1.5rem;
     padding-bottom: 2rem;
 }
 
@@ -490,3 +491,45 @@ box-shadow:  8px 8px 16px var(--main-color),
   .panel {
     display: none;
   }
+
+  /* contact */
+    .contact{
+        text-align: center;
+    }
+
+    .contact-container{
+        gap: 2rem;
+    }
+
+    .form-container {
+        width: 50%;
+        padding: 2rem;
+        margin: 4rem;
+        border-radius: 4rem;
+        border: .2rem solid var(--main-color);
+        box-shadow:  8px 8px 16px var(--main-color),
+        -8px -8px 16px var(--main-color);
+    }
+
+    .form-container h2{
+        font-size: 3rem;
+        font-weight: 600;
+        padding-bottom: 1rem;
+    }
+
+    .info-container {
+        font-size: x-large;
+        width: 35%;
+        padding: 20px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    .form-text{
+        font-size: 1.5rem;
+    }

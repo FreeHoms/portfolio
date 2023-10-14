@@ -1,0 +1,30 @@
+<div id="contact" class="contact">
+    <h1>Send me a <span>message</span></h1>
+        <div class="contact-container flex">
+        <div class="form-container">
+            <h2>Contact Form</h2>
+             {{#if success}}
+                   <div class="success">{{success}}</div>
+              {{/if}}
+            <form action="#" method="post">
+                <label class="form-text" for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+
+                <label class="form-text" for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label class="form-text" for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="info-container">
+            <h2>Contact Information</h2>
+            <p>Phone: (072) 432-3347</p>
+            <p>Email: zed.ghalyoun@gmail.com</p>
+        </div>
+    </div>
+
+</div>

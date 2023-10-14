@@ -1,0 +1,18 @@
+<div id="message" class="contact">
+    <h1>My <span>messages</span></h1>
+    <div class="contact-container flex">
+        <div class="form-container">
+            <h2>Message Form</h2>
+            <!-- Form for displaying messages -->
+            {{#each messages}}
+                <p>{{fullname}}</p>
+                <p>{{email}}</p>
+                <p>{{message}}</p>
+                <!-- Form for deleting a message -->
+                <form action="/contact/{{id}}/delete" method="post">
+                    <button class="btn" type="submit">Delete</button>
+                </form>
+            {{/each}}
+        </div>
+    </div>
+</div>
