@@ -32,6 +32,8 @@ db.run('CREATE TABLE IF NOT EXISTS blogs (' +
 
 // Create Operation
 router.post('/blogs', (req, res) => {
+if(req.session.isAuthenticated){
+    
     const { title, minor_description, img_link, content } = req.body;
 
     if (!title || !minor_description || !img_link || !content) {
@@ -44,6 +46,7 @@ router.post('/blogs', (req, res) => {
     console.log(insertStatement);
 
     res.redirect('/blogs');
+}
 });
 
 // Read Operation
@@ -85,6 +88,8 @@ router.get('/blogs/:id', (req, res) => {
 
 // Update Operation
 router.post('/blogs/:id/edit', (req, res) => {
+if(req.session.isAuthenticated){
+
     const blogId = req.params.id;
     const { title, minor_description, img_link, content } = req.body;
 
@@ -128,10 +133,13 @@ router.post('/blogs/:id/edit', (req, res) => {
     dynamicUpdateStatement.finalize();
 
     res.redirect('/blogs');
+}
 });
 
 // Delete Operation
 router.post('/blogs/:id/delete', (req, res) => {
+if(req.session.isAuthenticated){
+
     const blogId = req.params.id;
 
     const deleteStatement = db.prepare('DELETE FROM blogs WHERE id=?');
@@ -139,6 +147,7 @@ router.post('/blogs/:id/delete', (req, res) => {
     deleteStatement.finalize();
 
     res.redirect('/blogs');
+}
 });
 
 module.exports = router;

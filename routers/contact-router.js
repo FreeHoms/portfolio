@@ -15,11 +15,11 @@ db.run('CREATE TABLE IF NOT EXISTS contact (' +
         console.log('Contact table created successfully');
     }
 });
-  
 
 
 // Create Operation
 router.post('/contact', (req, res) => {
+    if (req.session.isAuthenticated){
     const { fullname, email, message } = req.body;
 
     if (!fullname || !email || !message) {
@@ -32,13 +32,14 @@ router.post('/contact', (req, res) => {
 
     const success = 'Message sent successfully!';
     res.render('contact', { success });
+}
 });
 
 // Read Operation for the contact page
 router.get('/contact', (req, res) => {
    if (req.session.isAuthenticated){
 
-    db.all('SELECT * FROM contact', (err, messages) => {
+    db.all('SELECT * FROM contact ORDER BY id DESC', (err, messages) => {
         if (err) {
             console.error(err.message);
             res.status(500).send('Internal Server Error');
@@ -61,6 +62,7 @@ router.get('/contact', (req, res) => {
 
 // Delete Operation
 router.post('/contact/:id/delete', (req, res) => {
+    if (req.session.isAuthenticated){
     const messageId  = req.params.id;
   
     const deleteStatement = db.prepare('DELETE FROM contact WHERE id=?');
@@ -68,6 +70,7 @@ router.post('/contact/:id/delete', (req, res) => {
     deleteStatement.finalize();
   
     res.redirect('/contact');
+    }
   });
 
 module.exports = router;

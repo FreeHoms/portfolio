@@ -7,6 +7,8 @@ const db = new sqlite3.Database('my-database.db');
 
 // Create Operation
 router.post('/projects', (req, res) => {
+if(req.session.isAuthenticated){
+
   const { title, description, link } = req.body;
 
   if (!title || !description || !link) {
@@ -18,6 +20,7 @@ router.post('/projects', (req, res) => {
   insertStatement.finalize();
 
   res.redirect('/projects');
+}
 });
 
 // Read Operation
@@ -39,6 +42,8 @@ router.get('/projects', (req, res) => {
 
 // Update Operation
 router.post('/projects/:id/edit', (req, res) => {
+if(req.session.isAuthenticated){
+
     const projectId = req.params.id;
     const { title, description, link } = req.body;
   
@@ -77,10 +82,13 @@ router.post('/projects/:id/edit', (req, res) => {
     dynamicUpdateStatement.finalize();
   
     res.redirect('/projects');
+  }
   });
   
 // Delete Operation
 router.post('/projects/:id/delete', (req, res) => {
+if(req.session.isAuthenticated){
+
   const projectId = req.params.id;
 
   const deleteStatement = db.prepare('DELETE FROM projects WHERE id=?');
@@ -88,6 +96,7 @@ router.post('/projects/:id/delete', (req, res) => {
   deleteStatement.finalize();
 
   res.redirect('/projects');
+}
 });
 
 module.exports = router;

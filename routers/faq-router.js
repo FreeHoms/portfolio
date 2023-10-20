@@ -15,8 +15,11 @@ db.run('CREATE TABLE IF NOT EXISTS faq (' +
     }
 });
 
+
 // Create Operation
 router.post('/faq', (req, res) => {
+if(req.session.isAuthenticated){
+
     const { question, answer } = req.body;
 
     if (!question || !answer) {
@@ -28,6 +31,7 @@ router.post('/faq', (req, res) => {
     insertStatement.finalize();
 
     res.redirect('/faq');
+}
 });
 
 // Read Operation
@@ -49,6 +53,8 @@ router.get('/faq', (req, res) => {
 
 // Update Operation
 router.post('/faq/:id/edit', (req, res) => {
+if(req.session.isAuthenticated){
+
     const faqId = req.params.id;
     const { question, answer } = req.body;
 
@@ -78,10 +84,13 @@ router.post('/faq/:id/edit', (req, res) => {
     dynamicUpdateStatement.finalize();
 
     res.redirect('/faq');
+}
 });
 
 // Delete Operation
 router.post('/faq/:id/delete', (req, res) => {
+if(req.session.isAuthenticated){
+
     const faqId = req.params.id;
 
     const deleteStatement = db.prepare('DELETE FROM faq WHERE id=?');
@@ -89,6 +98,7 @@ router.post('/faq/:id/delete', (req, res) => {
     deleteStatement.finalize();
 
     res.redirect('/faq');
+}
 });
 
 module.exports = router;

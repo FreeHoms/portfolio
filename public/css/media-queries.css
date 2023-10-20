@@ -32,11 +32,19 @@
     }
 
     .home{
+        margin-left: 2rem;
         flex-wrap: wrap;
+    }
+    .home-img{
+        display: none;
     }
 
     .btn{
         margin-bottom: 5%;
+        width: 17rem;
+    }
+    .btn-2{
+        margin-left: 0;
     }
     .home-img{
         margin-top: 1rem;    
@@ -68,4 +76,14 @@
   #card.is-flipped{
     transform: translateX(-105%) rotateY(180deg);
   }
+  .faq h1{
+    font-size: 3rem;
+  }
+  .panel-title {
+    font-size: 1.5rem;
+    }
+
+    .panel-content{
+        font-size: 1rem;
+    }
 }
