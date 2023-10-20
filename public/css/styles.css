@@ -173,6 +173,7 @@ box-shadow:  8px 8px 16px var(--main-color),
 #menu-icon{
     display: none;
 }
+
 .btn{
     display: inline-block;
     padding: 1rem 2.5rem;
@@ -194,7 +195,7 @@ box-shadow:  8px 8px 16px var(--main-color),
 }
 
 #night-mode-toggle{
-    margin-left: 2rem;
+    margin-left: 3rem;
     font-size: 1.7rem;
     padding: .7rem 1.5rem;
     font-weight: 600;
