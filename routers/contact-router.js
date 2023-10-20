@@ -19,7 +19,6 @@ db.run('CREATE TABLE IF NOT EXISTS contact (' +
 
 // Create Operation
 router.post('/contact', (req, res) => {
-    if (req.session.isAuthenticated){
     const { fullname, email, message } = req.body;
 
     if (!fullname || !email || !message) {
@@ -32,7 +31,6 @@ router.post('/contact', (req, res) => {
 
     const success = 'Message sent successfully!';
     res.render('contact', { success });
-}
 });
 
 // Read Operation for the contact page
