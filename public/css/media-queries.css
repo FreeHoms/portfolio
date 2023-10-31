@@ -76,6 +76,9 @@
         border-left: .7rem solid var(--text-color);
         padding-left: 5rem;
     }
+    .click-btn{
+        margin-right: 1rem;
+    }
 
     
   .education,
