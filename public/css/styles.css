@@ -205,7 +205,7 @@ box-shadow:  8px 8px 16px var(--main-color),
 .about{
     margin: 5rem;
     flex-direction: row;
-    width: 100%;
+    width: 92%;
     align-items:normal;
 }
 
